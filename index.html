@@ -6,16 +6,16 @@
          window.addEventListener("load", function(){
             // TODO: fetch planets JSON
             let data;
+            let counter = 0;
             fetch("https://handlers.education.launchcode.org/static/planets.json").then(response => response.json().then(json => {
                 return data = json; 
             }))
             const destination = document.querySelector("#destination");
             destination.addEventListener("click", function(){
-                console.log(counter);
                 if (counter <= data.length-1) {
                     destination.innerHTML = `
                     <div>
-                       <h3>Planet ${data[counter].name}</h3>
+                       <h3>Planet ${data[counter].name} (${counter})</h3>
                        <img src=${data[counter].image} height=250></img>
                     </div>
                 `;
@@ -25,7 +25,6 @@
                 }
             });
          });
-        
       </script>
    </head>
    <body>
